@@ -1,0 +1,101 @@
+﻿@model IEnumerable<CalendarDate.Models.MonthSummary>
+
+@{
+    ViewBag.Title = "AnalyzeMonth";
+    int SumDays = 0;
+    int  SumSaturday = 0;
+    int SumSunday = 0;
+    int SumWeekends = 0;
+    int SumWorkingSays = 0;
+    int SumPay= 0;
+    int SumHolidays = 0;
+}
+
+<h2>AnalyzeMonth</h2>
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Month)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSaturday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSunday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalWeekends)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalWorkingDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHolidays)
+        </th>
+        <th>Total Pay</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var TotalPay = item.TotalWorkingDays * 8 * 100;
+        SumDays += item.TotalDays;
+        SumSaturday += item.TotalSaturday;
+        SumSunday += item.TotalSunday;
+        SumWeekends+= item.TotalWeekends;
+        SumWorkingSays += item.TotalWorkingDays;
+        SumPay += TotalPay;
+        SumHolidays  += item.TotalHolidays;
+
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Year)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Month)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalDays)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalSaturday)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalSunday)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalWeekends)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalWorkingDays)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalHolidays)
+    </td>
+    
+    <td>@TotalPay</td>
+
+</tr>
+    }
+<tr>
+    <th colspan="2">Total</th>
+    <th>@SumDays</th>
+    <th>@SumSaturday</th>
+    <th>@SumSaturday</th>
+    <th>@SumWeekends</th>
+    <th>@SumWorkingSays</th>
+    <th>@SumHolidays</th>
+    <th>@SumPay</th>
+</tr>
+
+</table>
