@@ -26,7 +26,7 @@ namespace CalendarDate.Controllers
         {
             if (model.Year == 0)
             {
-                model = ViewBag.InputModel;
+       
                 model = TempData["Input"] as InputModel;
             }
             var dates = DateSevice.PopulateDates(model.Year);
