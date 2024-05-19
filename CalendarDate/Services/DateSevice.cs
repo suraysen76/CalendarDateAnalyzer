@@ -27,26 +27,48 @@ namespace CalendarDate.Services
             return dateList;
         }
 
-        public static YearSummary AnalyzeYear(int year)
+        public static YearSummary AnalyzeYear(InputModel model)
         {
-            var summary = new YearSummary();
-            var dict =  Holidays.GetHolidays().ToList();
-            summary.TotalHolidays  = dict.Sum(x => x.Value);
-            //summary.TotalHolidays = dict.Count;
-           
-
-            summary.TotalDays = dateList.Count();
             var weekends1 = dateList.Where(x => x.Day == "Saturday").ToList();
-
             var weekends2 = dateList.Where(x => x.Day == "Sunday").ToList();
-            summary.Year = year;
-            summary.TotalWeekends = weekends1.Count() + weekends2.Count();
+
+            var summary = new YearSummary();
+            summary.Year = model.Year;
+            summary.TotalDays = dateList.Count();
             summary.TotalSaturday = weekends1.Count();
             summary.TotalSunday = weekends2.Count();
+            summary.TotalWeekends = weekends1.Count() + weekends2.Count();
+            summary.TotalHolidays = CountTotalHolidays(model);
             summary.TotalWorkingDays = dateList.Count() - summary.TotalWeekends-summary.TotalHolidays;
             return summary;
         }
-        public static List<MonthSummary> AnalyzeMonth(int year)
+
+        public static  int CountTotalHolidays(InputModel model)
+        {
+            int count = 0;
+            if (model.Holidays != null)
+            {
+
+                var holidaysModel = model.Holidays;
+                count += holidaysModel.JanHoliday;
+                count += holidaysModel.FebHoliday;
+                count += holidaysModel.MarHoliday;
+                count += holidaysModel.MayHoliday;
+                count += holidaysModel.AprHoliday;
+                count += holidaysModel.JunHoliday;
+                count += holidaysModel.JulHoliday;
+                count += holidaysModel.AugHoliday;
+                count += holidaysModel.SepHoliday;
+                count += holidaysModel.OctHoliday;
+                count += holidaysModel.NovHoliday;
+                count += holidaysModel.DecHoliday;
+            }
+
+            return count;
+            
+        }
+
+        public static List<MonthSummary> AnalyzeMonth(InputModel inputModel)
         {
             var summary = new List<MonthSummary>();
             var weekends1 =new List<DateModel>();
@@ -61,13 +83,14 @@ namespace CalendarDate.Services
                 var weekendsSun = month1ist.Where(x => x.Day == "Sunday").ToList();
 
                 model.TotalDays = month1ist.Count();
-                model.Year = year;
+                model.Year = inputModel.Year;
                 model.Month = i;
                 model.TotalWeekends = weekendsSat.Count() + weekendsSun.Count();
                 model.TotalSaturday = weekendsSat.Count();
                 model.TotalSunday = weekendsSun.Count();
-                model.TotalWorkingDays = month1ist.Count() - model.TotalWeekends;
-                model.TotalHolidays = Holidays.GetHolidays()[i];
+                model.TotalHolidays = Holidays.GetMonthlyHolidays(inputModel, i);
+                model.TotalWorkingDays = month1ist.Count() - model.TotalWeekends- model.TotalHolidays;
+                
                 summary.Add(model);
             }
           

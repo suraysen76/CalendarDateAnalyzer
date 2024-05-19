@@ -13,25 +13,33 @@ namespace CalendarDate.Controllers
         public ActionResult AnalyzeYear(InputModel model)
         {
            
+            if (model.Year == 0 || model == null)
+            {
+                model = (InputModel)TempData["InputModel"];
+            }
+            model.Holidays = (HolidayModel)TempData["HolidaysModel"];
+
+
             var dates = DateSevice.PopulateDates(model.Year);
-            var summary = DateSevice.AnalyzeYear(model.Year);
+            var summary = DateSevice.AnalyzeYear(model);
             
 
             ViewBag.Year = model.Year;
+            TempData["InputModel"] = model;
             return View(summary);
         }
        
 
         public ActionResult AnalyzeMonth(InputModel model)
         {
-            if (model.Year == 0)
+           if (model.Year == 0 || model==null)
             {
-       
-                model = TempData["Input"] as InputModel;
+                model=(InputModel) TempData["InputModel"];
             }
             var dates = DateSevice.PopulateDates(model.Year);
-            var summary = DateSevice.AnalyzeMonth(model.Year);
+            var summary = DateSevice.AnalyzeMonth(model);
             ViewBag.Year = model.Year;
+            TempData["InputModel"] = model;
             return View(summary);
         }
 

@@ -1,8 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@model CalendarDate.Models.InputModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <title>Input </title>
+    <style>
+        Small {
+            background: #cccccc;
+        
+        }
+    </style>
 </head>
+
 <body>
     <form method="post">
         <fieldset>
@@ -12,23 +21,129 @@
 
                 <tr>
                     <td>Year:</td>
-                    <td><input type="text" name="Year" value="" /></td>
+                    <td> @Html.TextBoxFor(model => model.Year, new { @type = "number", @Value = "2024" })</td>
                 </tr>
                 <tr>
                     <td>Hourly Pay:</td>
-                    <td><input type="text" name="HourlyPay" value="" /></td>
+                    <td> @Html.TextBoxFor(model => model.HourlyPay, new { @type = "number", @Value = "80" })
+                  </td>
                 </tr>
                 <tr>
                     <td>Working Hours Per Day:</td>
-                    <td><input type="text" name="WorkingHoursPerDay" value="" /></td>
+                    <td>
+                        @Html.TextBoxFor(model => model.WorkingHoursPerDay, new { @type = "number", @Value = "8" })
+                        <br />
+                        <br />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Holidays Per Day Month:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        January
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.JanHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        February
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.FebHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        March
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.MarHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        April
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.AprHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        May
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.MayHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        June
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.JunHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        July
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.JulHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        August
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.AugHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        September
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.SepHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        October
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.OctHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        November
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.NovHoliday, new { @type = "number", @Value = "0" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        December
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.Holidays.DecHoliday, new { @type = "number", @Value = "0" })
+                    </td>
                 </tr>
                 <tr>
                     <td</td>
-                    <td> <input type="submit" value="Submit" class="submit" /></td>
-                  >
+                    <td> <input type="submit" value="Analyze" class="submit" /></td>
                 </tr>
-        </fieldset> 
-        </table>
+            </table>
+       
     </form>
+  
 </body>
 </html>

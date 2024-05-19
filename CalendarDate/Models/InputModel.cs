@@ -12,5 +12,7 @@ namespace CalendarDate.Models
         public int HourlyPay { get; set; }
         public int WorkingHoursPerDay { get; set; }
 
+        public HolidayModel Holidays { get; set; }
+
     }
 }

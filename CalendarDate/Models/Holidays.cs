@@ -8,25 +8,51 @@ namespace CalendarDate.Models
     public static class Holidays
     {
 
-        public static Dictionary<int,int> GetHolidays()
+        public static int GetMonthlyHolidays(InputModel model, int month)
         {
-            
-            Dictionary<int, int> holidays = new Dictionary<int, int>();
+            var total = 0;
+            if (model.Holidays!= null) {
+                switch (month) {
+                    case 1:
+                        total = model.Holidays.JanHoliday;
+                        break;
+                    case 2:
+                        total = model.Holidays.FebHoliday;
+                        break;
+                    case 3:
+                        total = model.Holidays.MarHoliday;
+                        break;
+                    case 4:
+                        total = model.Holidays.AprHoliday;
+                        break;
+                    case 5:
+                        total = model.Holidays.MayHoliday;
+                        break;
+                    case 6:
+                        total = model.Holidays.JunHoliday;
+                        break;
+                    case 7:
+                        total = model.Holidays.JulHoliday;
+                        break;
+                    case 8:
+                        total = model.Holidays.AugHoliday;
+                        break;
+                    case 9:
+                        total = model.Holidays.SepHoliday;
+                        break;
+                    case 10:
+                        total = model.Holidays.OctHoliday;
+                        break;
+                    case 11:
+                        total = model.Holidays.NovHoliday;
+                        break;
+                    case 12:
+                        total = model.Holidays.DecHoliday;
+                        break;
+                }
+            }
 
-            holidays.Add(1, 2);
-            holidays.Add(2, 4);
-            holidays.Add(3, 1);
-            holidays.Add(4, 2);
-            holidays.Add(5, 2);
-            holidays.Add(6, 2);
-            holidays.Add(7, 2);
-            holidays.Add(8, 1);
-            holidays.Add(9, 2);
-            holidays.Add(10, 1);
-            holidays.Add(11, 0);
-            holidays.Add(12, 2);
-
-            return holidays;
+            return total;
 
         }
     }

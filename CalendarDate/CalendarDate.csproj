@@ -126,6 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DateModel.cs" />
+    <Compile Include="Models\HolidayModel.cs" />
     <Compile Include="Models\Holidays.cs" />
     <Compile Include="Models\InputModel.cs" />
     <Compile Include="Models\MonthSummary.cs" />
