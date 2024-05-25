@@ -10,36 +10,49 @@ namespace CalendarDate.Controllers
 {
     public class DateController : Controller
     {
+
+        public static InputModel inputModel { get; set; }
         public ActionResult AnalyzeYear(InputModel model)
         {
-           
-            if (model.Year == 0 || model == null)
+            if (model.Year == 0)
             {
-                model = (InputModel)TempData["InputModel"];
+                model = inputModel;
             }
-            model.Holidays = (HolidayModel)TempData["HolidaysModel"];
-
-
-            var dates = DateSevice.PopulateDates(model.Year);
             var summary = DateSevice.AnalyzeYear(model);
             
+                if (model != null)
+                {
+                    var dates = DateSevice.PopulateDates(model.Year);                  
 
-            ViewBag.Year = model.Year;
-            TempData["InputModel"] = model;
+
+                    ViewBag.Year = model.Year;
+                    ViewBag.HourlyPay = model.HourlyPay;
+                    ViewBag.WorkingHoursPerDay = model.WorkingHoursPerDay;
+                    inputModel = model;
+            }            
             return View(summary);
         }
        
 
         public ActionResult AnalyzeMonth(InputModel model)
         {
-           if (model.Year == 0 || model==null)
+            if (model.Year == 0)
             {
-                model=(InputModel) TempData["InputModel"];
+                model = inputModel;
             }
-            var dates = DateSevice.PopulateDates(model.Year);
             var summary = DateSevice.AnalyzeMonth(model);
-            ViewBag.Year = model.Year;
-            TempData["InputModel"] = model;
+
+
+            if (model != null)
+            {
+                var dates = DateSevice.PopulateDates(model.Year);
+
+                ViewBag.Year = model.Year;
+                ViewBag.HourlyPay = model.HourlyPay;
+                ViewBag.WorkingHoursPerDay = model.WorkingHoursPerDay;              
+
+            }
+            
             return View(summary);
         }
 

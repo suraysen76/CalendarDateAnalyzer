@@ -21,8 +21,9 @@ namespace CalendarDate.Controllers
         [HttpPost]
         public ActionResult Index(InputModel model)
         {
-            TempData["HolidaysModel"] = model.Holidays;
+            
             TempData["InputModel"] = model;
+            ViewBag.InputModel= model;
             return RedirectToAction("AnalyzeYear", "Date",  model );
         }
 

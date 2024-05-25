@@ -26,5 +26,7 @@ namespace CalendarDate.Models
         public int TotalWorkingDays { get; set; }
         [Display(Name = "Total HolidDays")]
         public int TotalHolidays { get; set; }
+
+        public InputModel InputModel { get; set; }
     }
 }

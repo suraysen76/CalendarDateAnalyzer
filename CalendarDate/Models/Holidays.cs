@@ -11,43 +11,43 @@ namespace CalendarDate.Models
         public static int GetMonthlyHolidays(InputModel model, int month)
         {
             var total = 0;
-            if (model.Holidays!= null) {
+            if (model!= null) {
                 switch (month) {
                     case 1:
-                        total = model.Holidays.JanHoliday;
+                        total = model.JanHoliday;
                         break;
                     case 2:
-                        total = model.Holidays.FebHoliday;
+                        total = model.FebHoliday;
                         break;
                     case 3:
-                        total = model.Holidays.MarHoliday;
+                        total = model.MarHoliday;
                         break;
                     case 4:
-                        total = model.Holidays.AprHoliday;
+                        total = model.AprHoliday;
                         break;
                     case 5:
-                        total = model.Holidays.MayHoliday;
+                        total = model.MayHoliday;
                         break;
                     case 6:
-                        total = model.Holidays.JunHoliday;
+                        total = model.JunHoliday;
                         break;
                     case 7:
-                        total = model.Holidays.JulHoliday;
+                        total = model.JulHoliday;
                         break;
                     case 8:
-                        total = model.Holidays.AugHoliday;
+                        total = model.AugHoliday;
                         break;
                     case 9:
-                        total = model.Holidays.SepHoliday;
+                        total = model.SepHoliday;
                         break;
                     case 10:
-                        total = model.Holidays.OctHoliday;
+                        total = model.OctHoliday;
                         break;
                     case 11:
-                        total = model.Holidays.NovHoliday;
+                        total = model.NovHoliday;
                         break;
                     case 12:
-                        total = model.Holidays.DecHoliday;
+                        total = model.DecHoliday;
                         break;
                 }
             }
